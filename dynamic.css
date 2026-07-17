@@ -15,8 +15,10 @@
 @font-face { font-family: "Eurostile Extended"; src: url("assets/Eurostile-BoldExtended.otf") format("opentype"); font-weight: 700; }
 @font-face { font-family: "Helvetica Neue LT Std"; src: url("assets/HelveticaNeueLTStd-Bold.otf") format("opentype"); font-weight: 700; }
 
-.page h2 { font-family: "Compacta Std", Impact, sans-serif; }
-.page h3 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
+.page h2 { font-family: "Compacta Std", Impact, sans-serif; font-size: 160px; line-height: .9; }
+.page h3 { font-family: "Gobold High", Impact, sans-serif; font-size: 76px; line-height: .92; font-weight: 300; }
+.cover h2 { font-size: 180px; }
+.cover h3 { font-size: 90px; }
 .page p { font-family: "Roboto", Arial, sans-serif; }
 .cover-copy p { font-family: "Eurostile Extended", Arial, sans-serif; }
 .cover-copy p strong { font-family: "Eurostile Extended", Arial, sans-serif; font-weight: 700; }
