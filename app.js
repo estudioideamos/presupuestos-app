@@ -250,7 +250,20 @@ document.getElementById('downloadBtn').addEventListener('click', async () => {
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
 
     if (!window.html2canvas || !window.jspdf?.jsPDF) { window.print(); return; }
-    const pdf = new window.jspdf.jsPDF({unit:'mm', format:'a4', orientation:'portrait', compress:true});
+    const passwordBytes = new Uint32Array(4);
+    crypto.getRandomValues(passwordBytes);
+    const ownerPassword = [...passwordBytes].map(value => value.toString(36)).join('-');
+    const pdf = new window.jspdf.jsPDF({
+      unit: 'mm',
+      format: 'a4',
+      orientation: 'portrait',
+      compress: true,
+      encryption: {
+        userPassword: '',
+        ownerPassword,
+        userPermissions: ['print']
+      }
+    });
     const pages = [...doc.querySelectorAll('.page')];
     for (let index = 0; index < pages.length; index += 1) {
       const canvas = await window.html2canvas(pages[index], {
