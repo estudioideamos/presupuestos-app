@@ -50,7 +50,11 @@
   background-size: 100% 100%;
 }
 .page.cover { background-image: url("assets/fondo-1.png"); }
-.page.about { background-image: url("assets/fondo-2.png"); }
+.page.about {
+  background-image: url("assets/fondo-2.png");
+  background-size: 94% 100%;
+  background-color: #242526;
+}
 .page.proposal { background-image: url("assets/fondo-3.png"); }
 .page.budget { background-image: url("assets/fondo-4.png"); }
 .page.conditions { background-image: url("assets/fondo-5.png"); }
