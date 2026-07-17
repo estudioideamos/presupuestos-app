@@ -27,6 +27,45 @@
 .price h5 span, .price h5 b { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 700; }
 .conditions h4 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
 
+/* Posiciones fijas tomadas de la maqueta original para evitar saltos por texto variable. */
+.proposal .feature-grid {
+  position: absolute;
+  top: 870px;
+  left: 49px;
+  right: 49px;
+  margin: 0;
+  row-gap: 34px;
+}
+.proposal .feature-grid > div { min-height: 80px; }
+.proposal .feature-grid > div p { padding-left: 31px; }
+.budget .include-block {
+  position: absolute;
+  top: 485px;
+  left: 49px;
+  right: 49px;
+}
+.budget .include-block .check-title { margin: 0 0 18px; padding-left: 39px; }
+.budget .included { margin: 24px 0 0; }
+.budget .included-item { min-height: 45px; padding-left: 29px; }
+.budget .payment-block {
+  position: absolute;
+  top: 805px;
+  left: 49px;
+  right: 49px;
+}
+.budget .payment-block .check-title { margin: 0 0 18px; padding-left: 39px; }
+.budget .payment-block .price { margin: 18px 0; }
+.conditions section {
+  position: absolute;
+  left: 58px;
+  right: 49px;
+  margin: 0;
+  padding-left: 52px;
+}
+.conditions section:nth-of-type(1) { top: 500px; }
+.conditions section:nth-of-type(2) { top: 610px; }
+.conditions section:nth-of-type(3) { top: 790px; }
+
 .list-item {
   position: relative;
   margin: 9px 0;
