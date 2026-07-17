@@ -419,3 +419,19 @@
   opacity: .55;
   border-style: solid;
 }
+
+/* El A4 conserva 794 px de layout aunque se vea escalado. Sin recortar ese
+   ancho, el navegador permite scroll lateral y deja toda la UI desplazada. */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+@media (max-width: 760px) {
+  .workspace { overflow: hidden; }
+  .document {
+    --mobile-scale: calc((100vw - 24px) / 794);
+    transform: scale(var(--mobile-scale));
+    transform-origin: top center;
+    margin-bottom: calc((1123px * 6 + 110px) * (var(--mobile-scale) - 1));
+  }
+}
