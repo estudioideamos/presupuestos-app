@@ -401,6 +401,19 @@
   animation: previewFocusPulse 1.8s ease both;
   border-radius: 4px;
 }
+.document.exporting {
+  width: 794px !important;
+  margin: 0 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.document.exporting .page {
+  width: 794px !important;
+  height: 1123px !important;
+  margin: 0 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
 .add-item:disabled {
   cursor: default;
   opacity: .55;

@@ -241,15 +241,33 @@ document.getElementById('downloadBtn').addEventListener('click', async () => {
   btn.disabled = true; btn.textContent = 'Generando…'; status.textContent = 'Preparando PDF de 6 páginas…';
   doc.classList.add('exporting');
   try {
-    if (!window.html2pdf) { window.print(); return; }
-    await html2pdf().set({
-      margin: 0,
-      filename: `Presupuesto - ${client}.pdf`,
-      image: {type:'jpeg', quality:.98},
-      html2canvas: {scale:2, useCORS:true, backgroundColor:'#242526'},
-      jsPDF: {unit:'mm', format:'a4', orientation:'portrait'},
-      pagebreak: {mode:['css','legacy']}
-    }).from(doc).save();
+    document.querySelectorAll('.preview-focus').forEach(element => element.classList.remove('preview-focus'));
+    if (document.fonts?.ready) await document.fonts.ready;
+    await Promise.all([...doc.querySelectorAll('img')].map(image => image.complete ? image.decode?.().catch(() => {}) : new Promise(resolve => {
+      image.addEventListener('load', resolve, {once:true});
+      image.addEventListener('error', resolve, {once:true});
+    })));
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+    if (!window.html2canvas || !window.jspdf?.jsPDF) { window.print(); return; }
+    const pdf = new window.jspdf.jsPDF({unit:'mm', format:'a4', orientation:'portrait', compress:true});
+    const pages = [...doc.querySelectorAll('.page')];
+    for (let index = 0; index < pages.length; index += 1) {
+      const canvas = await window.html2canvas(pages[index], {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#242526',
+        width: 794,
+        height: 1123,
+        windowWidth: 794,
+        windowHeight: 1123,
+        scrollX: 0,
+        scrollY: 0
+      });
+      if (index) pdf.addPage('a4', 'portrait');
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297, undefined, 'FAST');
+    }
+    pdf.save(`Presupuesto - ${client}.pdf`);
     status.textContent = 'PDF descargado';
   } catch (error) {
     console.error(error); status.textContent = 'No se pudo descargar. Abrimos la impresión como alternativa.'; window.print();
