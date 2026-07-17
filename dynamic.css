@@ -60,7 +60,7 @@
 }
 .proposal .feature-grid > div { position: relative; min-height: 82px; }
 .proposal .feature-grid > div::before {
-  content: "✓";
+  content: "";
   position: absolute;
   top: 39px;
   left: 0;
@@ -68,9 +68,17 @@
   height: 16px;
   border: 2px solid var(--orange);
   border-radius: 4px;
-  color: var(--orange);
-  font: 700 10px/12px Arial, sans-serif;
-  text-align: center;
+}
+.proposal .feature-grid > div::after {
+  content: "";
+  position: absolute;
+  top: 42px;
+  left: 6px;
+  width: 4px;
+  height: 7px;
+  border-right: 1.5px solid var(--orange);
+  border-bottom: 1.5px solid var(--orange);
+  transform: rotate(45deg);
 }
 .proposal .feature-grid > div h4 { font-size: 21.33px; line-height: 1.2; margin-bottom: 13px; }
 .proposal .feature-grid > div p {
@@ -89,6 +97,7 @@
 .proposal .feature-grid[data-density="compact"] h4 { font-size: 19px; line-height: 1.2; margin-bottom: 8px; }
 .proposal .feature-grid[data-density="compact"] p { padding-left: 29px; font-size: 12px !important; line-height: 1.45; }
 .proposal .feature-grid[data-density="compact"] > div::before { top: 31px; }
+.proposal .feature-grid[data-density="compact"] > div::after { top: 34px; }
 .proposal .feature-grid[data-density="dense"] {
   top: 815px;
   grid-template-columns: repeat(3, 1fr);
@@ -118,7 +127,7 @@
 }
 .budget .included-item { min-height: 20px; padding-left: 22px; }
 .budget .included-item::before {
-  content: "✓";
+  content: "";
   position: absolute;
   top: 3px;
   left: 0;
@@ -126,9 +135,17 @@
   height: 12px;
   border: 1.5px solid var(--orange);
   border-radius: 3px;
-  color: var(--orange);
-  font: 700 8px/9px Arial, sans-serif;
-  text-align: center;
+}
+.budget .included-item::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  width: 3px;
+  height: 5px;
+  border-right: 1px solid var(--orange);
+  border-bottom: 1px solid var(--orange);
+  transform: rotate(45deg);
 }
 .budget .included-item h6 {
   margin: 0;
@@ -159,7 +176,7 @@
 .budget .payment-block .check-title { margin: 0 0 18px; padding-left: 39px; }
 .budget .check-title { position: relative; }
 .budget .check-title::before {
-  content: "✓";
+  content: "";
   position: absolute;
   top: 3px;
   left: 0;
@@ -169,9 +186,17 @@
   padding: 0;
   border: 2px solid var(--orange);
   border-radius: 5px;
-  color: var(--orange);
-  font: 700 12px/18px Arial, sans-serif;
-  text-align: center;
+}
+.budget .check-title::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 8px;
+  width: 5px;
+  height: 9px;
+  border-right: 1.5px solid var(--orange);
+  border-bottom: 1.5px solid var(--orange);
+  transform: rotate(45deg);
 }
 .budget .payment-block .price {
   position: absolute;
@@ -205,7 +230,7 @@
   padding-left: 52px;
 }
 .conditions section::before {
-  content: "✓";
+  content: "";
   position: absolute;
   top: 2px;
   left: 0;
@@ -214,9 +239,17 @@
   padding: 0;
   border: 2px solid var(--orange);
   border-radius: 5px;
-  color: var(--orange);
-  font: 700 12px/16px Arial, sans-serif;
-  text-align: center;
+}
+.conditions section::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  width: 5px;
+  height: 8px;
+  border-right: 1.5px solid var(--orange);
+  border-bottom: 1.5px solid var(--orange);
+  transform: rotate(45deg);
 }
 .conditions section:nth-of-type(1) { top: 500px; }
 .conditions section:nth-of-type(2) { top: 610px; }
