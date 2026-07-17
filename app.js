@@ -147,7 +147,7 @@ function applyAdaptiveLayout() {
   const included = document.getElementById('includedOutput');
   const featureChars = lists.features.reduce((sum, item) => sum + item.title.length + item.description.length, 0);
   const includedChars = lists.included.reduce((sum, item) => sum + item.title.length + item.description.length, 0);
-  setDensity(features, lists.features.length, featureChars, 5, 7);
+  setDensity(features, lists.features.length, featureChars, 5, Number.POSITIVE_INFINITY);
   setDensity(included, lists.included.length, includedChars, 9, 13);
   if (lists.included.some(item => item.description.trim()) && included.dataset.density === 'normal') {
     included.dataset.density = 'compact';
@@ -195,11 +195,18 @@ function renderList(name) {
     card.querySelector('.remove-item').addEventListener('click', () => { lists[name].splice(index, 1); renderList(name); save(); });
     editor.appendChild(card);
   });
+  const addButton = document.querySelector(`[data-add-list="${name}"]`);
+  if (name === 'features' && addButton) {
+    const reachedLimit = lists.features.length >= 6;
+    addButton.disabled = reachedLimit;
+    addButton.textContent = reachedLimit ? 'Máximo 6 bullets' : '+ Agregar bullet';
+  }
   renderListOutput(name);
 }
 
 document.querySelectorAll('[data-add-list]').forEach(button => button.addEventListener('click', () => {
   const name = button.dataset.addList;
+  if (name === 'features' && lists.features.length >= 6) return;
   lists[name].push({title:'Nuevo ítem', description:name === 'features' ? 'Escribí aquí la descripción.' : ''});
   renderList(name);
   save();
