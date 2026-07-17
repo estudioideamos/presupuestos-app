@@ -110,6 +110,72 @@
   letter-spacing: 0;
 }
 
+/* Geometría tipográfica medida directamente sobre el PDF A4 original. */
+.page > h2,
+.cover .cover-copy > h2 {
+  position: absolute;
+  top: 141px;
+  left: 47px;
+  width: 128%;
+  margin: 0;
+  font-size: 181px;
+  line-height: .9;
+  white-space: nowrap;
+  transform: scaleX(.78);
+  transform-origin: left top;
+}
+.page > h3,
+.cover .cover-copy > h3 {
+  position: absolute;
+  top: 312px;
+  left: 47px;
+  right: 40px;
+  margin: 0;
+  font-size: 73px;
+  line-height: .92;
+  white-space: nowrap;
+}
+.cover .cover-copy { position: static; }
+.cover .cover-copy > h2 { font-size: 181px; }
+.cover .cover-copy > h3 { font-size: 91px; }
+.cover .cover-copy > p {
+  position: absolute;
+  top: 452px;
+  left: 50px;
+  margin: 0;
+}
+.thanks > div > h2 {
+  position: absolute;
+  top: 309px;
+  left: 47px;
+  width: 128%;
+  margin: 0;
+  font-size: 181px;
+  line-height: .9;
+  white-space: nowrap;
+  transform: scaleX(.78);
+  transform-origin: left top;
+}
+.thanks > div > h3 {
+  position: absolute;
+  top: 480px;
+  left: 47px;
+  right: 40px;
+  margin: 0;
+  font-size: 73px;
+  line-height: .92;
+  white-space: nowrap;
+}
+.thanks > div > p {
+  position: absolute;
+  top: 638px;
+  left: 49px;
+  right: 49px;
+  margin: 0;
+  font-size: 20px;
+}
+.page > p:not(.lead) { font-size: 16px; }
+
 .list-item {
   position: relative;
   margin: 9px 0;
