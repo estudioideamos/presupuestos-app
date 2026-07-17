@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Compacta Std";
+  src: url("assets/Compacta-Std.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.page h2 { font-family: "Compacta Std", Impact, sans-serif; }
+
 .list-item {
   position: relative;
   margin: 9px 0;
