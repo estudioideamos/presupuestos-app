@@ -100,7 +100,7 @@
 .proposal .feature-grid[data-density="dense"] p { padding-left: 0; font-size: 9px !important; line-height: 1.3; }
 .budget .include-block {
   position: absolute;
-  top: 493px;
+  top: 460px;
   left: 49px;
   right: 49px;
 }
@@ -117,6 +117,19 @@
   row-gap: 20px;
 }
 .budget .included-item { min-height: 20px; padding-left: 22px; }
+.budget .included-item::before {
+  content: "✓";
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--orange);
+  border-radius: 3px;
+  color: var(--orange);
+  font: 700 8px/9px Arial, sans-serif;
+  text-align: center;
+}
 .budget .included-item h6 {
   margin: 0;
   font-family: "Roboto", Arial, sans-serif;
@@ -139,11 +152,27 @@
 .budget .included[data-density="dense"] p { font-size: 8px; line-height: 1.2; }
 .budget .payment-block {
   position: absolute;
-  top: 816px;
+  top: 845px;
   left: 49px;
   right: 49px;
 }
 .budget .payment-block .check-title { margin: 0 0 18px; padding-left: 39px; }
+.budget .check-title { position: relative; }
+.budget .check-title::before {
+  content: "✓";
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--orange);
+  border-radius: 5px;
+  color: var(--orange);
+  font: 700 12px/18px Arial, sans-serif;
+  text-align: center;
+}
 .budget .payment-block .price {
   position: absolute;
   left: 0;
@@ -366,11 +395,11 @@
   background-color: #242526;
 }
 .page.proposal { background-image: url("assets/fondo-3.png?v=2"); }
-.page.budget { background-image: url("assets/fondo-4.png"); }
+.page.budget { background-image: url("assets/fondo-4.png?v=2"); }
 .page.conditions { background-image: url("assets/fondo-5.png?v=2"); }
 .page.thanks { background-image: url("assets/fondo-6.png?v=2"); }
 .page .logo, .page .rule, .page .mountains, .client-logos, .thanks footer { visibility: hidden; }
-.feature-grid h4::before, .check-title::before, .included-item::before { content: none; }
+.feature-grid h4::before { content: none; }
 
 @keyframes previewFocusPulse {
   0%, 100% { filter: none; text-shadow: none; }
