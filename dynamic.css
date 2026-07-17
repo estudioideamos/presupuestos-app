@@ -429,6 +429,8 @@ html, body {
 @media (max-width: 760px) {
   .workspace { overflow: hidden; }
   .document {
+    margin-left: calc(50% - 397px);
+    margin-right: 0;
     transform: scale(.42);
     transform-origin: top center;
     margin-bottom: -3980px;
