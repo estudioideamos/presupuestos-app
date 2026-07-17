@@ -1,5 +1,8 @@
 const defaults = Object.fromEntries([...document.querySelectorAll('[data-field]')].map(el => [el.dataset.field, el.value]));
 const saved = JSON.parse(localStorage.getItem('ideamos-quote') || '{}');
+if (saved.option2Detail === 'Primer pago (50%) antes de empezar, 50% un día antes del alta online final.') {
+  saved.option2Detail = 'Primer pago (50%) antes de empezar. 50% (pago 2) un día antes de la migración / alta online final.';
+}
 const fields = document.querySelectorAll('[data-field]');
 const status = document.getElementById('status');
 const defaultLists = {
