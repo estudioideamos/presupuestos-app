@@ -38,6 +38,20 @@
   margin: 0;
   row-gap: 34px;
 }
+.proposal > .lead {
+  position: absolute;
+  top: 455px;
+  left: 49px;
+  right: 49px;
+  margin: 0;
+}
+.proposal > p:not(.lead) {
+  position: absolute;
+  top: 630px;
+  left: 49px;
+  right: 49px;
+  margin: 0;
+}
 .proposal .feature-grid > div { min-height: 80px; }
 .proposal .feature-grid > div p { padding-left: 31px; }
 .budget .include-block {
@@ -67,6 +81,27 @@
 .conditions section:nth-of-type(1) { top: 500px; }
 .conditions section:nth-of-type(2) { top: 610px; }
 .conditions section:nth-of-type(3) { top: 790px; }
+
+.about > .lead {
+  position: absolute;
+  top: 455px;
+  left: 49px;
+  right: 49px;
+  margin: 0;
+}
+.about > p:not(.lead) {
+  position: absolute;
+  top: 625px;
+  left: 49px;
+  right: 49px;
+  margin: 0;
+}
+.about > h4 {
+  position: absolute;
+  top: 780px;
+  left: 49px;
+  margin: 0;
+}
 
 .list-item {
   position: relative;
