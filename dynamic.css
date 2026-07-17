@@ -42,3 +42,18 @@
 .included-item::before { content: "✓"; position: absolute; left: 0; color: var(--orange); }
 .included-item h6 { margin: 0 0 4px; font-size: 14px; }
 .included-item p { font-size: 11px; line-height: 1.45; }
+
+/* Recursos gráficos extraídos del PDF original de InDesign. */
+.page {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.page.cover { background-image: url("assets/fondo-1.png"); }
+.page.about { background-image: url("assets/fondo-2.png"); }
+.page.proposal { background-image: url("assets/fondo-3.png"); }
+.page.budget { background-image: url("assets/fondo-4.png"); }
+.page.conditions { background-image: url("assets/fondo-5.png"); }
+.page.thanks { background-image: url("assets/fondo-6.png"); }
+.page .logo, .page .rule, .page .mountains, .client-logos, .thanks footer { visibility: hidden; }
+.feature-grid h4::before, .check-title::before, .included-item::before, .conditions section::before { content: none; }
