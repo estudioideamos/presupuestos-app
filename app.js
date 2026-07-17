@@ -4,10 +4,10 @@ const fields = document.querySelectorAll('[data-field]');
 const status = document.getElementById('status');
 const defaultLists = {
   features: [
-    {title:'Catálogo por líneas', description:'Productos organizados para facilitar la búsqueda.'},
-    {title:'Fichas de producto', description:'Imágenes, información y acceso directo a consulta.'},
-    {title:'Solicitud de presupuesto', description:'Selección de productos y pedido por WhatsApp.'},
-    {title:'Diseño responsive', description:'Optimizado para computadoras, tablets y celulares.'}
+    {title:'Catálogo por líneas', description:'Los 22 productos estarán organizados en cinco líneas para facilitar la búsqueda.'},
+    {title:'Fichas de producto', description:'Cada producto contará con imágenes, información y acceso directo a consulta.'},
+    {title:'Solicitud de presupuesto', description:'El usuario podrá seleccionar productos y enviar su pedido directamente por WhatsApp.'},
+    {title:'Diseño responsive', description:'La experiencia estará optimizada para computadoras, tablets y teléfonos celulares.'}
   ],
   included: [
     {title:'Diseño a medida', description:'Una propuesta visual pensada para la marca.'},
@@ -19,6 +19,15 @@ const defaultLists = {
   ]
 };
 let lists = JSON.parse(localStorage.getItem('ideamos-quote-lists') || 'null') || structuredClone(defaultLists);
+const featureMigrations = new Map([
+  ['Productos organizados para facilitar la búsqueda.', defaultLists.features[0].description],
+  ['Imágenes, información y acceso directo a consulta.', defaultLists.features[1].description],
+  ['Selección de productos y pedido por WhatsApp.', defaultLists.features[2].description],
+  ['Optimizado para computadoras, tablets y celulares.', defaultLists.features[3].description]
+]);
+lists.features.forEach(item => {
+  if (featureMigrations.has(item.description)) item.description = featureMigrations.get(item.description);
+});
 
 function render(name, value) {
   document.querySelectorAll(`[data-output="${name}"]`).forEach(el => el.textContent = value);

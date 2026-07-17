@@ -35,11 +35,12 @@
 /* Posiciones fijas tomadas de la maqueta original para evitar saltos por texto variable. */
 .proposal .feature-grid {
   position: absolute;
-  top: 870px;
-  left: 49px;
-  right: 49px;
+  top: 873px;
+  left: 52px;
+  right: 50px;
   margin: 0;
   row-gap: 34px;
+  column-gap: 29px;
 }
 .proposal > .lead {
   position: absolute;
@@ -55,8 +56,9 @@
   right: 49px;
   margin: 0;
 }
-.proposal .feature-grid > div { min-height: 80px; }
-.proposal .feature-grid > div p { padding-left: 31px; }
+.proposal .feature-grid > div { min-height: 82px; }
+.proposal .feature-grid > div h4 { font-size: 21.33px; line-height: 1.2; margin-bottom: 13px; }
+.proposal .feature-grid > div p { padding-left: 29px; font-size: 13.33px !important; line-height: 1.6; }
 .proposal .feature-grid[data-density="compact"] {
   top: 855px;
   row-gap: 14px;
