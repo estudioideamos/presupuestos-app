@@ -58,7 +58,20 @@
   right: 49px;
   margin: 0;
 }
-.proposal .feature-grid > div { min-height: 82px; }
+.proposal .feature-grid > div { position: relative; min-height: 82px; }
+.proposal .feature-grid > div::before {
+  content: "✓";
+  position: absolute;
+  top: 39px;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--orange);
+  border-radius: 4px;
+  color: var(--orange);
+  font: 700 10px/12px Arial, sans-serif;
+  text-align: center;
+}
 .proposal .feature-grid > div h4 { font-size: 21.33px; line-height: 1.2; margin-bottom: 13px; }
 .proposal .feature-grid > div p {
   padding-left: 29px;
@@ -75,6 +88,7 @@
 .proposal .feature-grid[data-density="compact"] > div { min-height: 68px; }
 .proposal .feature-grid[data-density="compact"] h4 { font-size: 19px; line-height: 1.2; margin-bottom: 8px; }
 .proposal .feature-grid[data-density="compact"] p { padding-left: 29px; font-size: 12px !important; line-height: 1.45; }
+.proposal .feature-grid[data-density="compact"] > div::before { top: 31px; }
 .proposal .feature-grid[data-density="dense"] {
   top: 815px;
   grid-template-columns: repeat(3, 1fr);
@@ -337,7 +351,7 @@
   background-size: 100% 100%;
   background-color: #242526;
 }
-.page.proposal { background-image: url("assets/fondo-3.png"); }
+.page.proposal { background-image: url("assets/fondo-3.png?v=2"); }
 .page.budget { background-image: url("assets/fondo-4.png"); }
 .page.conditions { background-image: url("assets/fondo-5.png"); }
 .page.thanks { background-image: url("assets/fondo-6.png?v=2"); }
