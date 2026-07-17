@@ -324,3 +324,12 @@
 .page.thanks { background-image: url("assets/fondo-6.png"); }
 .page .logo, .page .rule, .page .mountains, .client-logos, .thanks footer { visibility: hidden; }
 .feature-grid h4::before, .check-title::before, .included-item::before, .conditions section::before { content: none; }
+
+@keyframes previewFocusPulse {
+  0%, 100% { filter: none; text-shadow: none; }
+  20%, 70% { filter: drop-shadow(0 0 8px rgba(255, 75, 43, .75)); text-shadow: 0 0 1px rgba(255, 255, 255, .8); }
+}
+.preview-focus {
+  animation: previewFocusPulse 1.8s ease both;
+  border-radius: 4px;
+}

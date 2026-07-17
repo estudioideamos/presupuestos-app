@@ -55,6 +55,29 @@ function render(name, value) {
   scheduleAdaptiveLayout();
 }
 
+function focusPreview(target) {
+  if (!target) return;
+  document.querySelectorAll('.preview-focus').forEach(element => element.classList.remove('preview-focus'));
+  target.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'nearest'});
+  target.classList.remove('preview-focus');
+  requestAnimationFrame(() => target.classList.add('preview-focus'));
+  clearTimeout(focusPreview.timer);
+  focusPreview.timer = setTimeout(() => target.classList.remove('preview-focus'), 1800);
+}
+
+function focusFieldPreview(fieldName) {
+  const outputName = fieldName === 'projectShort' ? 'project' : fieldName;
+  const targets = [...document.querySelectorAll(`[data-output="${outputName}"]`)];
+  if (!targets.length) return;
+  const viewportCenter = window.innerHeight / 2;
+  const nearest = targets.reduce((best, target) => {
+    const center = target.getBoundingClientRect().top + target.getBoundingClientRect().height / 2;
+    const distance = Math.abs(center - viewportCenter);
+    return !best || distance < best.distance ? {target, distance} : best;
+  }, null);
+  focusPreview(nearest.target);
+}
+
 let adaptiveFrame;
 function scheduleAdaptiveLayout() {
   cancelAnimationFrame(adaptiveFrame);
@@ -147,6 +170,8 @@ function renderList(name) {
     textarea.value = item.description;
     input.addEventListener('input', () => { lists[name][index].title = input.value; renderListOutput(name); save(); });
     textarea.addEventListener('input', () => { lists[name][index].description = textarea.value; renderListOutput(name); save(); });
+    input.addEventListener('focus', () => focusPreview(document.getElementById(`${name}Output`).children[index]));
+    textarea.addEventListener('focus', () => focusPreview(document.getElementById(`${name}Output`).children[index]));
     card.querySelector('.remove-item').addEventListener('click', () => { lists[name].splice(index, 1); renderList(name); save(); });
     editor.appendChild(card);
   });
@@ -166,6 +191,7 @@ fields.forEach(el => {
   el.value = saved[el.dataset.field] ?? el.value;
   render(el.dataset.field, el.value);
   el.addEventListener('input', () => { render(el.dataset.field, el.value); save(); });
+  el.addEventListener('focus', () => focusFieldPreview(el.dataset.field));
 });
 
 document.getElementById('resetBtn').addEventListener('click', () => {
