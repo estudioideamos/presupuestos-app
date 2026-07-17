@@ -71,6 +71,16 @@ function fitText(element, maxHeight, minimumSize) {
   }
 }
 
+function fitTextWidth(element, minimumSize) {
+  if (!element) return;
+  element.style.fontSize = '';
+  let size = parseFloat(getComputedStyle(element).fontSize);
+  while (element.scrollWidth > element.clientWidth && size > minimumSize) {
+    size -= 0.5;
+    element.style.fontSize = `${size}px`;
+  }
+}
+
 function setDensity(element, count, totalCharacters, compactAt, denseAt) {
   if (!element) return;
   element.dataset.density = count >= denseAt || totalCharacters > denseAt * 90
@@ -82,6 +92,9 @@ function setDensity(element, count, totalCharacters, compactAt, denseAt) {
 }
 
 function applyAdaptiveLayout() {
+  document.querySelectorAll('h3[data-output="project"]').forEach(element => {
+    fitTextWidth(element, element.closest('.cover') ? 68 : 52);
+  });
   fitText(document.querySelector('.proposal > .lead'), 125, 16);
   fitText(document.querySelector('.proposal > p:not(.lead)'), 215, 11);
   fitText(document.querySelector('.budget .include-block > p:not(.scope)'), 58, 11);
