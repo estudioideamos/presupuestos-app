@@ -37,7 +37,7 @@
 /* Posiciones fijas tomadas de la maqueta original para evitar saltos por texto variable. */
 .proposal .feature-grid {
   position: absolute;
-  top: 873px;
+  top: 838px;
   left: 52px;
   right: 50px;
   margin: 0;
@@ -60,9 +60,15 @@
 }
 .proposal .feature-grid > div { min-height: 82px; }
 .proposal .feature-grid > div h4 { font-size: 21.33px; line-height: 1.2; margin-bottom: 13px; }
-.proposal .feature-grid > div p { padding-left: 29px; font-size: 13.33px !important; line-height: 1.6; }
+.proposal .feature-grid > div p {
+  padding-left: 29px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 13.33px !important;
+  font-weight: 300;
+  line-height: 1.6;
+}
 .proposal .feature-grid[data-density="compact"] {
-  top: 855px;
+  top: 825px;
   row-gap: 14px;
   column-gap: 35px;
 }
@@ -70,7 +76,7 @@
 .proposal .feature-grid[data-density="compact"] h4 { font-size: 17px; margin-bottom: 4px; }
 .proposal .feature-grid[data-density="compact"] p { font-size: 10px !important; line-height: 1.4; }
 .proposal .feature-grid[data-density="dense"] {
-  top: 845px;
+  top: 815px;
   grid-template-columns: repeat(3, 1fr);
   row-gap: 9px;
   column-gap: 22px;
