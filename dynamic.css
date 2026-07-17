@@ -259,7 +259,6 @@
   display: block;
   width: 185px;
   height: auto;
-  filter: grayscale(1) brightness(0) invert(1);
 }
 
 /* Recursos gráficos extraídos del PDF original de InDesign. */
