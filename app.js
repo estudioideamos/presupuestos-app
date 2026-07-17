@@ -35,6 +35,7 @@ const legacyIncludedTitles = new Set([
 if (lists.included.length === 6 && lists.included.every(item => legacyIncludedTitles.has(item.title))) {
   lists.included = structuredClone(defaultLists.included);
 }
+lists.included.forEach(item => { item.description = ''; });
 const featureMigrations = new Map([
   ['Productos organizados para facilitar la búsqueda.', defaultLists.features[0].description],
   ['Imágenes, información y acceso directo a consulta.', defaultLists.features[1].description],
@@ -180,15 +181,17 @@ function renderList(name) {
   lists[name].forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'list-item';
-    card.innerHTML = '<button type="button" class="remove-item" aria-label="Quitar ítem">×</button><label>Título<input></label><label>Descripción<textarea rows="2"></textarea></label>';
+    card.innerHTML = name === 'features'
+      ? '<button type="button" class="remove-item" aria-label="Quitar ítem">×</button><label>Título<input></label><label>Descripción<textarea rows="2"></textarea></label>'
+      : '<button type="button" class="remove-item" aria-label="Quitar ítem">×</button><label>Texto<input></label>';
     const input = card.querySelector('input');
     const textarea = card.querySelector('textarea');
     input.value = item.title;
-    textarea.value = item.description;
+    if (textarea) textarea.value = item.description;
     input.addEventListener('input', () => { lists[name][index].title = input.value; renderListOutput(name); save(); });
-    textarea.addEventListener('input', () => { lists[name][index].description = textarea.value; renderListOutput(name); save(); });
+    if (textarea) textarea.addEventListener('input', () => { lists[name][index].description = textarea.value; renderListOutput(name); save(); });
     input.addEventListener('focus', () => focusPreview(document.getElementById(`${name}Output`).children[index]));
-    textarea.addEventListener('focus', () => focusPreview(document.getElementById(`${name}Output`).children[index]));
+    if (textarea) textarea.addEventListener('focus', () => focusPreview(document.getElementById(`${name}Output`).children[index]));
     card.querySelector('.remove-item').addEventListener('click', () => { lists[name].splice(index, 1); renderList(name); save(); });
     editor.appendChild(card);
   });
@@ -197,7 +200,7 @@ function renderList(name) {
 
 document.querySelectorAll('[data-add-list]').forEach(button => button.addEventListener('click', () => {
   const name = button.dataset.addList;
-  lists[name].push({title:'Nuevo ítem', description:'Escribí aquí la descripción.'});
+  lists[name].push({title:'Nuevo ítem', description:name === 'features' ? 'Escribí aquí la descripción.' : ''});
   renderList(name);
   save();
 }));
