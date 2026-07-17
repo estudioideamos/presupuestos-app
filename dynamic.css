@@ -5,8 +5,27 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face { font-family: "Gobold High"; src: url("assets/Gobold-High.otf") format("truetype"); font-weight: 400; }
+@font-face { font-family: "Gobold High"; src: url("assets/Gobold-High-Thin.otf") format("truetype"); font-weight: 300; }
+@font-face { font-family: "Gobold High"; src: url("assets/Gobold-High-Bold.otf") format("truetype"); font-weight: 700; }
+@font-face { font-family: "Eurostile LT"; src: url("assets/Eurostile-Regular.otf") format("opentype"); font-weight: 400; }
+@font-face { font-family: "Eurostile LT"; src: url("assets/Eurostile-Demi.otf") format("opentype"); font-weight: 600; }
+@font-face { font-family: "Eurostile LT"; src: url("assets/Eurostile-Bold.otf") format("opentype"); font-weight: 700; }
+@font-face { font-family: "Eurostile Extended"; src: url("assets/Eurostile-Extended.otf") format("opentype"); font-weight: 400; }
+@font-face { font-family: "Eurostile Extended"; src: url("assets/Eurostile-BoldExtended.otf") format("opentype"); font-weight: 700; }
 
 .page h2 { font-family: "Compacta Std", Impact, sans-serif; }
+.page h3 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
+.page p { font-family: "Roboto", Arial, sans-serif; }
+.cover-copy p, .conditions h3 { font-family: "Eurostile Extended", Arial, sans-serif; }
+.cover-copy p strong { font-family: "Eurostile Extended", Arial, sans-serif; font-weight: 700; }
+.about h3, .thanks h3 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
+.about h3 span { font-weight: 700; }
+.feature-grid h4, .scope, .thanks p { font-family: "Roboto", Arial, sans-serif; font-weight: 700; }
+.check-title { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 600; }
+.price h5 { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 400; }
+.price h5 span, .price h5 b { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 700; }
+.conditions h4 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
 
 .list-item {
   position: relative;
