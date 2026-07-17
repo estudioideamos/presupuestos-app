@@ -42,6 +42,7 @@
 .included-item::before { content: "✓"; position: absolute; left: 0; color: var(--orange); }
 .included-item h6 { margin: 0 0 4px; font-size: 14px; }
 .included-item p { font-size: 11px; line-height: 1.45; }
+.editor .brand img { display: block; width: 185px; height: auto; }
 
 /* Recursos gráficos extraídos del PDF original de InDesign. */
 .page {
