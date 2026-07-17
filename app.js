@@ -22,6 +22,49 @@ let lists = JSON.parse(localStorage.getItem('ideamos-quote-lists') || 'null') ||
 
 function render(name, value) {
   document.querySelectorAll(`[data-output="${name}"]`).forEach(el => el.textContent = value);
+  scheduleAdaptiveLayout();
+}
+
+let adaptiveFrame;
+function scheduleAdaptiveLayout() {
+  cancelAnimationFrame(adaptiveFrame);
+  adaptiveFrame = requestAnimationFrame(applyAdaptiveLayout);
+}
+
+function fitText(element, maxHeight, minimumSize) {
+  if (!element) return;
+  element.style.fontSize = '';
+  let size = parseFloat(getComputedStyle(element).fontSize);
+  while (element.scrollHeight > maxHeight && size > minimumSize) {
+    size -= 0.5;
+    element.style.fontSize = `${size}px`;
+  }
+}
+
+function setDensity(element, count, totalCharacters, compactAt, denseAt) {
+  if (!element) return;
+  element.dataset.density = count >= denseAt || totalCharacters > denseAt * 90
+    ? 'dense'
+    : count >= compactAt || totalCharacters > compactAt * 90
+      ? 'compact'
+      : 'normal';
+  element.dataset.count = String(count);
+}
+
+function applyAdaptiveLayout() {
+  fitText(document.querySelector('.proposal > .lead'), 125, 16);
+  fitText(document.querySelector('.proposal > p:not(.lead)'), 215, 11);
+  fitText(document.querySelector('.budget .include-block > p:not(.scope)'), 58, 11);
+  fitText(document.querySelector('.budget .scope'), 60, 11);
+  fitText(document.querySelector('.price [data-output="option1Detail"]'), 52, 10);
+  fitText(document.querySelector('.price [data-output="option2Detail"]'), 52, 10);
+
+  const features = document.getElementById('featuresOutput');
+  const included = document.getElementById('includedOutput');
+  const featureChars = lists.features.reduce((sum, item) => sum + item.title.length + item.description.length, 0);
+  const includedChars = lists.included.reduce((sum, item) => sum + item.title.length + item.description.length, 0);
+  setDensity(features, lists.features.length, featureChars, 5, 7);
+  setDensity(included, lists.included.length, includedChars, 7, 10);
 }
 function save() {
   const data = Object.fromEntries([...fields].map(el => [el.dataset.field, el.value]));
@@ -42,6 +85,7 @@ function renderListOutput(name) {
     entry.querySelector('p').textContent = item.description;
     output.appendChild(entry);
   });
+  scheduleAdaptiveLayout();
 }
 
 function renderList(name) {
@@ -71,6 +115,7 @@ document.querySelectorAll('[data-add-list]').forEach(button => button.addEventLi
 }));
 renderList('features');
 renderList('included');
+scheduleAdaptiveLayout();
 fields.forEach(el => {
   el.value = saved[el.dataset.field] ?? el.value;
   render(el.dataset.field, el.value);
