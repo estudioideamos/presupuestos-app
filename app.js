@@ -10,15 +10,24 @@ const defaultLists = {
     {title:'Diseño responsive', description:'La experiencia estará optimizada para computadoras, tablets y teléfonos celulares.'}
   ],
   included: [
-    {title:'Diseño a medida', description:'Una propuesta visual pensada para la marca.'},
-    {title:'Páginas individuales', description:'Secciones y URLs según el alcance acordado.'},
-    {title:'Diseño responsive', description:'Adaptable a computadoras, tablets y celulares.'},
-    {title:'Etapas de revisiones', description:'Hasta dos instancias de ajustes.'},
-    {title:'Optimización general', description:'Estructura clara, rápida y ordenada.'},
-    {title:'Sistema de consulta', description:'Preparado para generar contactos comerciales.'}
+    {title:'28 páginas / URLs en total.', description:''},
+    {title:'22 páginas individuales de producto.', description:''},
+    {title:'Productos organizados en 5 líneas.', description:''},
+    {title:'Imágenes y características por producto.', description:''},
+    {title:'Solicitud de presupuesto por WhatsApp.', description:''},
+    {title:'Adaptable a todos los dispositivos.', description:''},
+    {title:'Hasta dos etapas de revisiones.', description:''},
+    {title:'Sistema de consulta, sin pagos automáticos.', description:''}
   ]
 };
 let lists = JSON.parse(localStorage.getItem('ideamos-quote-lists') || 'null') || structuredClone(defaultLists);
+const legacyIncludedTitles = new Set([
+  'Diseño a medida', 'Páginas individuales', 'Diseño responsive',
+  'Etapas de revisiones', 'Optimización general', 'Sistema de consulta'
+]);
+if (lists.included.length === 6 && lists.included.every(item => legacyIncludedTitles.has(item.title))) {
+  lists.included = structuredClone(defaultLists.included);
+}
 const featureMigrations = new Map([
   ['Productos organizados para facilitar la búsqueda.', defaultLists.features[0].description],
   ['Imágenes, información y acceso directo a consulta.', defaultLists.features[1].description],
@@ -30,7 +39,16 @@ lists.features.forEach(item => {
 });
 
 function render(name, value) {
-  document.querySelectorAll(`[data-output="${name}"]`).forEach(el => el.textContent = value);
+  document.querySelectorAll(`[data-output="${name}"]`).forEach(el => {
+    if (name === 'option1' || name === 'option2') {
+      const parts = value.match(/^(.*?)(\$[\d.,]+)\s*$/);
+      if (parts) {
+        el.replaceChildren(document.createTextNode(parts[1]), Object.assign(document.createElement('strong'), {textContent: parts[2]}));
+        return;
+      }
+    }
+    el.textContent = value;
+  });
   scheduleAdaptiveLayout();
 }
 
@@ -73,7 +91,10 @@ function applyAdaptiveLayout() {
   const featureChars = lists.features.reduce((sum, item) => sum + item.title.length + item.description.length, 0);
   const includedChars = lists.included.reduce((sum, item) => sum + item.title.length + item.description.length, 0);
   setDensity(features, lists.features.length, featureChars, 5, 7);
-  setDensity(included, lists.included.length, includedChars, 7, 10);
+  setDensity(included, lists.included.length, includedChars, 9, 13);
+  if (lists.included.some(item => item.description.trim()) && included.dataset.density === 'normal') {
+    included.dataset.density = 'compact';
+  }
 }
 function save() {
   const data = Object.fromEntries([...fields].map(el => [el.dataset.field, el.value]));
