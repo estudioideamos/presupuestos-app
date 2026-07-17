@@ -3,6 +3,10 @@ const saved = JSON.parse(localStorage.getItem('ideamos-quote') || '{}');
 if (saved.option2Detail === 'Primer pago (50%) antes de empezar, 50% un día antes del alta online final.') {
   saved.option2Detail = 'Primer pago (50%) antes de empezar. 50% (pago 2) un día antes de la migración / alta online final.';
 }
+const legacyPaymentTerms = '1 - Por transferencia bancaria, 100% adelantado con un 10% de descuento.\n2 - Por transferencia bancaria, 50% antes de empezar y 50% antes del alta online.\n3 - Con tarjeta de crédito, con un 10% extra.';
+if (saved.paymentTerms === legacyPaymentTerms) {
+  saved.paymentTerms = 'Podés elegir una de estas opciones:\n1 - Por transferencia bancaria, 100% adelantado con un 10% de descuento.\n2 - Por transferencia bancaria, 50% antes de empezar, 50% un día antes del alta online.\n3 - Con tarjeta de crédito en las cuotas que te permita tu banco, con un 10% extra.';
+}
 const fields = document.querySelectorAll('[data-field]');
 const status = document.getElementById('status');
 const defaultLists = {
@@ -43,6 +47,19 @@ lists.features.forEach(item => {
 
 function render(name, value) {
   document.querySelectorAll(`[data-output="${name}"]`).forEach(el => {
+    if (name === 'paymentTerms') {
+      const [intro, ...lines] = value.split('\n');
+      el.replaceChildren(Object.assign(document.createElement('strong'), {textContent: intro}));
+      if (lines.length) el.append(document.createTextNode(`\n${lines.join('\n')}`));
+      return;
+    }
+    if (name === 'validity') {
+      const parts = value.match(/^(Hasta el\s+)(.+)$/i);
+      if (parts) {
+        el.replaceChildren(document.createTextNode(parts[1]), Object.assign(document.createElement('strong'), {textContent: parts[2]}));
+        return;
+      }
+    }
     if (name === 'option1' || name === 'option2') {
       const parts = value.match(/^(.*?)(\$[\d.,]+)\s*$/);
       if (parts) {

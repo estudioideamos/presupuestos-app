@@ -30,7 +30,7 @@
 .price h5 span { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 600; }
 .price h5 b { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 400; }
 .price h5 b strong { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 700; }
-.conditions h4 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
+.conditions h4 { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 400; }
 .conditions h3 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
 .thanks p, .thanks footer { font-family: "Helvetica Neue LT Std", Arial, sans-serif; font-weight: 700; }
 
@@ -157,7 +157,20 @@
 }
 .conditions section:nth-of-type(1) { top: 500px; }
 .conditions section:nth-of-type(2) { top: 610px; }
-.conditions section:nth-of-type(3) { top: 790px; }
+.conditions section:nth-of-type(3) { top: 820px; }
+.conditions section h4 {
+  margin: 0 0 12px;
+  font-size: 27px;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+.conditions section p {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.95;
+}
+.conditions section p strong { font-weight: 700; }
 
 .about > .lead {
   position: absolute;

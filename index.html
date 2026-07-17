@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="dynamic.css?v=20260717-9">
+  <link rel="stylesheet" href="dynamic.css?v=20260717-10">
 </head>
 <body>
   <aside class="editor" aria-label="Editor del presupuesto">
@@ -47,9 +47,10 @@
         <label>Opción 2<input data-field="option2" value="DOS PAGOS DE $600.000"></label>
         <label>Detalle opción 2<textarea data-field="option2Detail" rows="2">Primer pago (50%) antes de empezar. 50% (pago 2) un día antes de la migración / alta online final.</textarea></label>
         <label>Tiempo de entrega<textarea data-field="delivery" rows="2">De 5 a 20 días hábiles desde la contratación y la entrega final de contenidos.</textarea></label>
-        <label>Formas de pago<textarea data-field="paymentTerms" rows="5">1 - Por transferencia bancaria, 100% adelantado con un 10% de descuento.
-2 - Por transferencia bancaria, 50% antes de empezar y 50% antes del alta online.
-3 - Con tarjeta de crédito, con un 10% extra.</textarea></label>
+        <label>Formas de pago<textarea data-field="paymentTerms" rows="6">Podés elegir una de estas opciones:
+1 - Por transferencia bancaria, 100% adelantado con un 10% de descuento.
+2 - Por transferencia bancaria, 50% antes de empezar, 50% un día antes del alta online.
+3 - Con tarjeta de crédito en las cuotas que te permita tu banco, con un 10% extra.</textarea></label>
         <label>Validez<input data-field="validity" value="Hasta el 21 de julio del 2026"></label>
       </details>
     </form>
@@ -104,7 +105,7 @@
         <h2>CONDICIONES</h2><h3>CLIENTE: <span data-output="client"></span></h3><i class="rule"></i>
         <section><h4>TIEMPO DE ENTREGA:</h4><p data-output="delivery"></p></section>
         <section><h4>FORMAS DE PAGO:</h4><p class="preserve" data-output="paymentTerms"></p></section>
-        <section><h4>VALIDEZ DEL PRESUPUESTO:</h4><p><b data-output="validity"></b></p></section>
+        <section><h4>VALIDEZ DEL PRESUPUESTO:</h4><p data-output="validity"></p></section>
         <div class="mountains small"><b></b><i></i><em></em></div>
       </article>
 
@@ -116,6 +117,6 @@
     </section>
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <script src="app.js?v=20260717-9"></script>
+  <script src="app.js?v=20260717-10"></script>
 </body>
 </html>
