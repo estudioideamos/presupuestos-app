@@ -429,9 +429,8 @@ html, body {
 @media (max-width: 760px) {
   .workspace { overflow: hidden; }
   .document {
-    --mobile-scale: calc((100vw - 24px) / 794);
-    transform: scale(var(--mobile-scale));
+    transform: scale(.42);
     transform-origin: top center;
-    margin-bottom: calc((1123px * 6 + 110px) * (var(--mobile-scale) - 1));
+    margin-bottom: -3980px;
   }
 }
