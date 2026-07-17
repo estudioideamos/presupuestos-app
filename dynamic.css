@@ -334,7 +334,7 @@
 .page.proposal { background-image: url("assets/fondo-3.png"); }
 .page.budget { background-image: url("assets/fondo-4.png"); }
 .page.conditions { background-image: url("assets/fondo-5.png"); }
-.page.thanks { background-image: url("assets/fondo-6.png"); }
+.page.thanks { background-image: url("assets/fondo-6.png?v=2"); }
 .page .logo, .page .rule, .page .mountains, .client-logos, .thanks footer { visibility: hidden; }
 .feature-grid h4::before, .check-title::before, .included-item::before, .conditions section::before { content: none; }
 
