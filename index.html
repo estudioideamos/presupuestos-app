@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dynamic.css">
 </head>
 <body>
   <aside class="editor" aria-label="Editor del presupuesto">
@@ -28,6 +29,16 @@
         <label>Descripción<textarea data-field="description" rows="7">El proyecto contempla el desarrollo de un sitio institucional con catálogo interactivo, pensado para ordenar la oferta de Mosaicos MC y convertir las visitas en consultas concretas. La web incluirá 22 productos organizados en cinco líneas. Cada producto tendrá su ficha individual y podrá sumarse a un carrito lateral para solicitar presupuesto por WhatsApp. No será un e-commerce con precios automáticos, sino una herramienta de preconsulta comercial.</textarea></label>
         <label>Resumen de lo incluido<textarea data-field="includedIntro" rows="3">Sitio web premium con diseño a medida, orientado a valorizar la marca, organizar el catálogo y generar consultas comerciales.</textarea></label>
         <label>Páginas / alcance<textarea data-field="scope" rows="3">Home. Nosotros. Productos. Obras. Descargas. Contacto. + 22 páginas individuales de producto.</textarea></label>
+      </details>
+      <details open>
+        <summary>Bullets de la propuesta</summary>
+        <div id="featuresEditor" class="list-editor"></div>
+        <button class="add-item" type="button" data-add-list="features">+ Agregar bullet</button>
+      </details>
+      <details open>
+        <summary>Ítems incluidos</summary>
+        <div id="includedEditor" class="list-editor"></div>
+        <button class="add-item" type="button" data-add-list="included">+ Agregar ítem</button>
       </details>
       <details open>
         <summary>Precio y condiciones</summary>
@@ -63,7 +74,7 @@
         <h2>SOBRE NOSOTROS</h2><h3><span>IDEAMOS</span> MARKETING &amp; DESARROLLO WEB</h3><i class="rule"></i>
         <p class="lead">En IDEAMOS trabajamos con empresas de todo el mundo. Tenemos presencia en Argentina, Estados Unidos, Uruguay y España, y más de 10 años de experiencia en diseño web, tiendas online y marketing digital.</p>
         <i class="rule"></i><p>Somos un equipo compacto y profesional que trabaja con empresas que buscan resultados: más visibilidad, más ventas y una imagen que transmita confianza. Cada proyecto lo abordamos como propio: con estrategia, claridad y diseño a medida.</p>
-        <h4>CONFÍAN EN NOSOTROS:</h4><div class="clients">RE/MAX · WYNN'S · SANTILLANA · IVESS<br>MACBA · KAPELUSZ · BGH · UBA</div>
+        <h4>CONFÍAN EN NOSOTROS:</h4><img class="client-logos" src="assets/logos-clientes.png" alt="Logos de empresas que confían en Ideamos">
         <div class="mountains small"><b></b><i></i><em></em></div>
       </article>
 
@@ -71,14 +82,14 @@
         <header class="logo"><span class="brand-mark"></span><b>Ideamos</b></header>
         <h2>PROPUESTA</h2><h3 data-output="project"></h3><i class="rule"></i>
         <p class="lead" data-output="intro"></p><i class="rule"></i><p data-output="description"></p>
-        <div class="feature-grid"><div><h4>Catálogo por líneas</h4><p>Productos organizados para facilitar la búsqueda.</p></div><div><h4>Fichas de producto</h4><p>Imágenes, información y acceso directo a consulta.</p></div><div><h4>Solicitud de presupuesto</h4><p>Selección de productos y pedido por WhatsApp.</p></div><div><h4>Diseño responsive</h4><p>Optimizado para computadoras, tablets y celulares.</p></div></div>
+        <div id="featuresOutput" class="feature-grid"></div>
       </article>
 
       <article class="page budget">
         <header class="logo"><span class="brand-mark"></span><b>Ideamos</b></header>
         <h2>PRESUPUESTO</h2><h3 data-output="project"></h3><i class="rule"></i>
         <h4 class="check-title">¿QUÉ INCLUYE?</h4><p data-output="includedIntro"></p><p class="scope" data-output="scope"></p>
-        <ul class="included"><li>Diseño a medida</li><li>Páginas individuales</li><li>Adaptable a todos los dispositivos</li><li>Hasta dos etapas de revisiones</li><li>Optimización general</li><li>Sistema de consulta</li></ul>
+        <div id="includedOutput" class="included"></div>
         <h4 class="check-title">OPCIONES DE PAGO</h4>
         <div class="price"><h5><span>OPCIÓN 1:</span> <b data-output="option1"></b></h5><p data-output="option1Detail"></p></div>
         <div class="price"><h5><span>OPCIÓN 2:</span> <b data-output="option2"></b></h5><p data-output="option2Detail"></p></div>
