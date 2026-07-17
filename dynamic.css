@@ -18,7 +18,7 @@
 .page h2 { font-family: "Compacta Std", Impact, sans-serif; }
 .page h3 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
 .page p { font-family: "Roboto", Arial, sans-serif; }
-.cover-copy p, .conditions h3 { font-family: "Eurostile Extended", Arial, sans-serif; }
+.cover-copy p { font-family: "Eurostile Extended", Arial, sans-serif; }
 .cover-copy p strong { font-family: "Eurostile Extended", Arial, sans-serif; font-weight: 700; }
 .about h3, .thanks h3 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
 .about h3 span { font-weight: 700; }
@@ -27,6 +27,7 @@
 .price h5 { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 400; }
 .price h5 span, .price h5 b { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 700; }
 .conditions h4 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
+.conditions h3 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
 .thanks p, .thanks footer { font-family: "Helvetica Neue LT Std", Arial, sans-serif; font-weight: 700; }
 
 /* Posiciones fijas tomadas de la maqueta original para evitar saltos por texto variable. */
