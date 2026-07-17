@@ -13,6 +13,7 @@
 @font-face { font-family: "Eurostile LT"; src: url("assets/Eurostile-Bold.otf") format("opentype"); font-weight: 700; }
 @font-face { font-family: "Eurostile Extended"; src: url("assets/Eurostile-Extended.otf") format("opentype"); font-weight: 400; }
 @font-face { font-family: "Eurostile Extended"; src: url("assets/Eurostile-BoldExtended.otf") format("opentype"); font-weight: 700; }
+@font-face { font-family: "Helvetica Neue LT Std"; src: url("assets/HelveticaNeueLTStd-Bold.otf") format("opentype"); font-weight: 700; }
 
 .page h2 { font-family: "Compacta Std", Impact, sans-serif; }
 .page h3 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
@@ -26,6 +27,7 @@
 .price h5 { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 400; }
 .price h5 span, .price h5 b { font-family: "Eurostile LT", Arial, sans-serif; font-weight: 700; }
 .conditions h4 { font-family: "Gobold High", Impact, sans-serif; font-weight: 300; }
+.thanks p, .thanks footer { font-family: "Helvetica Neue LT Std", Arial, sans-serif; font-weight: 700; }
 
 /* Posiciones fijas tomadas de la maqueta original para evitar saltos por texto variable. */
 .proposal .feature-grid {
