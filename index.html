@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Generador de presupuestos | Ideamos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="editor" aria-label="Editor del presupuesto">
+    <div class="brand"><span class="brand-mark"></span><b>Ideamos</b></div>
+    <p class="eyebrow">GENERADOR DE PRESUPUESTOS</p>
+    <h1>Armá tu propuesta</h1>
+    <p class="helper">Completá los campos. La vista se actualiza y se guarda automáticamente en este dispositivo.</p>
+    <form id="quoteForm">
+      <details open>
+        <summary>Datos principales</summary>
+        <label>Cliente<input data-field="client" value="MC MOSAICOS"></label>
+        <label>Tipo de proyecto<input data-field="project" value="SITIO WEB CON CATÁLOGO INTERACTIVO"></label>
+        <label>Nombre corto del proyecto<input data-field="projectShort" value="SITIO WEB CON CATÁLOGO INTERACTIVO"></label>
+      </details>
+      <details open>
+        <summary>Propuesta</summary>
+        <label>Introducción<textarea data-field="intro" rows="4">Proponemos desarrollar un sitio web premium para Mosaicos MC, orientado a presentar la marca, exhibir sus productos y generar consultas comerciales por WhatsApp.</textarea></label>
+        <label>Descripción<textarea data-field="description" rows="7">El proyecto contempla el desarrollo de un sitio institucional con catálogo interactivo, pensado para ordenar la oferta de Mosaicos MC y convertir las visitas en consultas concretas. La web incluirá 22 productos organizados en cinco líneas. Cada producto tendrá su ficha individual y podrá sumarse a un carrito lateral para solicitar presupuesto por WhatsApp. No será un e-commerce con precios automáticos, sino una herramienta de preconsulta comercial.</textarea></label>
+        <label>Resumen de lo incluido<textarea data-field="includedIntro" rows="3">Sitio web premium con diseño a medida, orientado a valorizar la marca, organizar el catálogo y generar consultas comerciales.</textarea></label>
+        <label>Páginas / alcance<textarea data-field="scope" rows="3">Home. Nosotros. Productos. Obras. Descargas. Contacto. + 22 páginas individuales de producto.</textarea></label>
+      </details>
+      <details open>
+        <summary>Precio y condiciones</summary>
+        <label>Opción 1<input data-field="option1" value="UN PAGO DE $750.000"></label>
+        <label>Detalle opción 1<textarea data-field="option1Detail" rows="2">Pago único adelantado antes de empezar el proyecto.</textarea></label>
+        <label>Opción 2<input data-field="option2" value="DOS PAGOS DE $600.000"></label>
+        <label>Detalle opción 2<textarea data-field="option2Detail" rows="2">Primer pago (50%) antes de empezar, 50% un día antes del alta online final.</textarea></label>
+        <label>Tiempo de entrega<textarea data-field="delivery" rows="2">De 5 a 20 días hábiles desde la contratación y la entrega final de contenidos.</textarea></label>
+        <label>Formas de pago<textarea data-field="paymentTerms" rows="5">1 - Por transferencia bancaria, 100% adelantado con un 10% de descuento.
+2 - Por transferencia bancaria, 50% antes de empezar y 50% antes del alta online.
+3 - Con tarjeta de crédito, con un 10% extra.</textarea></label>
+        <label>Validez<input data-field="validity" value="Hasta el 21 de julio del 2026"></label>
+      </details>
+    </form>
+    <div class="actions">
+      <button class="primary" id="downloadBtn" type="button">Descargar PDF</button>
+      <button class="secondary" id="resetBtn" type="button">Restablecer</button>
+    </div>
+    <p id="status" class="status" role="status"></p>
+  </aside>
+
+  <main class="workspace">
+    <div class="workspace-head"><span>Vista previa · 6 páginas A4</span><button id="zoomBtn" type="button">Ajustar ancho</button></div>
+    <section id="document" class="document">
+      <article class="page cover">
+        <header class="logo"><span class="brand-mark"></span><b>Ideamos</b></header>
+        <div class="cover-copy"><h2>PROPUESTA</h2><h3 data-output="project"></h3><i></i><p><strong>CLIENTE:</strong> <span data-output="client"></span></p></div>
+        <div class="mountains"><b></b><i></i><em></em></div>
+      </article>
+
+      <article class="page about">
+        <header class="logo"><span class="brand-mark"></span><b>Ideamos</b></header>
+        <h2>SOBRE NOSOTROS</h2><h3><span>IDEAMOS</span> MARKETING &amp; DESARROLLO WEB</h3><i class="rule"></i>
+        <p class="lead">En IDEAMOS trabajamos con empresas de todo el mundo. Tenemos presencia en Argentina, Estados Unidos, Uruguay y España, y más de 10 años de experiencia en diseño web, tiendas online y marketing digital.</p>
+        <i class="rule"></i><p>Somos un equipo compacto y profesional que trabaja con empresas que buscan resultados: más visibilidad, más ventas y una imagen que transmita confianza. Cada proyecto lo abordamos como propio: con estrategia, claridad y diseño a medida.</p>
+        <h4>CONFÍAN EN NOSOTROS:</h4><div class="clients">RE/MAX · WYNN'S · SANTILLANA · IVESS<br>MACBA · KAPELUSZ · BGH · UBA</div>
+        <div class="mountains small"><b></b><i></i><em></em></div>
+      </article>
+
+      <article class="page proposal">
+        <header class="logo"><span class="brand-mark"></span><b>Ideamos</b></header>
+        <h2>PROPUESTA</h2><h3 data-output="project"></h3><i class="rule"></i>
+        <p class="lead" data-output="intro"></p><i class="rule"></i><p data-output="description"></p>
+        <div class="feature-grid"><div><h4>Catálogo por líneas</h4><p>Productos organizados para facilitar la búsqueda.</p></div><div><h4>Fichas de producto</h4><p>Imágenes, información y acceso directo a consulta.</p></div><div><h4>Solicitud de presupuesto</h4><p>Selección de productos y pedido por WhatsApp.</p></div><div><h4>Diseño responsive</h4><p>Optimizado para computadoras, tablets y celulares.</p></div></div>
+      </article>
+
+      <article class="page budget">
+        <header class="logo"><span class="brand-mark"></span><b>Ideamos</b></header>
+        <h2>PRESUPUESTO</h2><h3 data-output="project"></h3><i class="rule"></i>
+        <h4 class="check-title">¿QUÉ INCLUYE?</h4><p data-output="includedIntro"></p><p class="scope" data-output="scope"></p>
+        <ul class="included"><li>Diseño a medida</li><li>Páginas individuales</li><li>Adaptable a todos los dispositivos</li><li>Hasta dos etapas de revisiones</li><li>Optimización general</li><li>Sistema de consulta</li></ul>
+        <h4 class="check-title">OPCIONES DE PAGO</h4>
+        <div class="price"><h5><span>OPCIÓN 1:</span> <b data-output="option1"></b></h5><p data-output="option1Detail"></p></div>
+        <div class="price"><h5><span>OPCIÓN 2:</span> <b data-output="option2"></b></h5><p data-output="option2Detail"></p></div>
+      </article>
+
+      <article class="page conditions">
+        <header class="logo"><span class="brand-mark"></span><b>Ideamos</b></header>
+        <h2>CONDICIONES</h2><h3>CLIENTE: <span data-output="client"></span></h3><i class="rule"></i>
+        <section><h4>TIEMPO DE ENTREGA:</h4><p data-output="delivery"></p></section>
+        <section><h4>FORMAS DE PAGO:</h4><p class="preserve" data-output="paymentTerms"></p></section>
+        <section><h4>VALIDEZ DEL PRESUPUESTO:</h4><p><b data-output="validity"></b></p></section>
+        <div class="mountains small"><b></b><i></i><em></em></div>
+      </article>
+
+      <article class="page thanks">
+        <header class="logo"><span class="brand-mark"></span><b>Ideamos</b></header>
+        <div><h2><span data-output="client"></span>,</h2><h3>¡GRACIAS! DE PARTE DEL EQUIPO IDEAMOS</h3><i class="rule"></i><p>Esperamos poder trabajar junto a ustedes y potenciarnos mutuamente.</p></div>
+        <footer>◎ &nbsp; www.ideamos.com.ar</footer>
+      </article>
+    </section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
